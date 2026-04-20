@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public long t=5;
     void Start()
     {
         
@@ -12,19 +11,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void FixedUpdate()
-    {
-        Check_Time();
-    }
-
-    void Check_Time();
-    {
-        
-    }
-
-    static void Player_Die()
-    {
     }
 }

@@ -133,8 +133,9 @@ GameObject:
   - component: {fileID: 510062794}
   - component: {fileID: 510062793}
   - component: {fileID: 510062792}
-  m_Layer: 0
-  m_Name: Enemy
+  - component: {fileID: 510062798}
+  m_Layer: 6
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,6 +153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bbf810ff90dfc45a87dc64cf8940b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  moveSpeed: 5
+  acceleration: 50
+  deceleration: 60
+  stoppingDistance: 0.15
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  playerCamera: {fileID: 0}
+  showDestinationGizmo: 1
 --- !u!54 &510062793
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -266,11 +276,61 @@ Transform:
   m_GameObject: {fileID: 510062791}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 2.18}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 676344929}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &510062798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510062791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff84e710c5007e49b21129fc2026171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
+  bulletPrefab: {fileID: 1726104856842198149, guid: de874441f7fb2e14d8e09c1c12ec7bb4, type: 3}
+  firePoint: {fileID: 676344929}
+  fireRate: 3
+  bulletSpeed: 20
+  bulletLifetime: 3
+  showFireDirectionGizmo: 1
+--- !u!1 &676344928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676344929}
+  m_Layer: 6
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &676344929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676344928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 510062797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -493,7 +553,7 @@ GameObject:
   - component: {fileID: 860532858}
   - component: {fileID: 860532857}
   - component: {fileID: 860532856}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,13 +851,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1224596604
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +873,7 @@ GameObject:
   - component: {fileID: 1224596605}
   - component: {fileID: 1224596610}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -933,7 +993,7 @@ Transform:
   m_GameObject: {fileID: 1224596604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.72, y: 0.5, z: -1.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -951,6 +1011,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff5859ab4c65e84ab3de7ff45436971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  moveSpeed: 1.5
+  acceleration: 50
+  rotationSpeed: 5
+  minDirectionChangeTime: 2
+  maxDirectionChangeTime: 5
+  mapCenter: {x: 0, y: 0, z: 0}
+  mapHalfExtents: {x: 10, y: 10}
+  boundaryBuffer: 1.5
+  detectionRadius: 4
+  detectionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  showDetectionGizmo: 1
+  showDirectionGizmo: 1
+  showMapBoundsGizmo: 1
 --- !u!1 &1430634813
 GameObject:
   m_ObjectHideFlags: 0
