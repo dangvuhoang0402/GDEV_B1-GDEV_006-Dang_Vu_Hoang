@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 5f;
     private float acceleration = 50f;
     private float deceleration = 60f;
+    private float HP=3;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
